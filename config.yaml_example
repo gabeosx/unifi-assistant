@@ -1,0 +1,10 @@
+unifi:
+  controller_url: "10.10.10.100"
+  username: "api"
+  password: "api"
+  ssl_verify: false
+
+gemini:
+  api_key: "asdf"
+  model: gemini-1.5-flash
+  api_type: google

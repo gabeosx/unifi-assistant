@@ -65,16 +65,16 @@ class DataCollector:
                 json.dump(client_devices, f, indent=2)
 
             # Add this to the collect_data method
-            end_time = int(time.time())
-            start_time = end_time - (7 * 24 * 60 * 60)  # 7 days ago
-            historical_data = self.get_historical_data(start_time, end_time)
-            with open('historical_data.json', 'w') as f:
-                json.dump(historical_data, f, indent=2)
+            # end_time = int(time.time())
+            # start_time = end_time - (7 * 24 * 60 * 60)  # 7 days ago
+            # historical_data = self.get_historical_data(start_time, end_time)
+            # with open('historical_data.json', 'w') as f:
+            #     json.dump(historical_data, f, indent=2)
 
             # Add this to the collect_data method
-            channel_util = self.get_channel_utilization()
-            with open('channel_utilization.json', 'w') as f:
-                json.dump(channel_util, f, indent=2)
+            # channel_util = self.get_channel_utilization()
+            # with open('channel_utilization.json', 'w') as f:
+            #     json.dump(channel_util, f, indent=2)
 
         except Exception as e:
             logging.error(f"Error during data collection: {str(e)}")
@@ -135,15 +135,15 @@ class DataCollector:
         response.raise_for_status()
         return response.json()['data']
 
-    def get_historical_data(self, start_time, end_time):
-        url = f"{self.base_url}/proxy/network/api/s/{self.site}/stat/report/hourly.site"
-        params = {'start': start_time, 'end': end_time}
-        response = self.session.get(url, params=params)
-        response.raise_for_status()
-        return response.json()['data']
+    # def get_historical_data(self, start_time, end_time):
+    #     url = f"{self.base_url}/proxy/network/api/s/{self.site}/stat/report/hourly.site"
+    #     params = {'start': start_time, 'end': end_time}
+    #     response = self.session.get(url, params=params)
+    #     response.raise_for_status()
+    #     return response.json()['data']
 
-    def get_channel_utilization(self):
-        url = f"{self.base_url}/proxy/network/api/s/{self.site}/stat/health"
-        response = self.session.get(url)
-        response.raise_for_status()
-        return response.json()['data']
+    # def get_channel_utilization(self):
+    #     url = f"{self.base_url}/proxy/network/api/s/{self.site}/stat/health"
+    #     response = self.session.get(url)
+    #     response.raise_for_status()
+    #     return response.json()['data']
